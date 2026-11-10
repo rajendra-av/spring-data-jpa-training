@@ -37,7 +37,9 @@ public class EmployeeController {
         this.service = service;
     }
 
-    // GET /employees or GET /employees?name=asha
+    /*
+      // GET /employees or GET /employees?name=asha
+
     @GetMapping
     public List<EmployeeResponse> list(@RequestParam(required = false) String name) {
         return service.findAll(name);
@@ -75,4 +77,6 @@ public class EmployeeController {
     public void delete(@PathVariable @Positive Long id) {
         service.delete(id);
     }
+
+     */
 }
