@@ -9,7 +9,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     boolean existsByEmail(String email);
 
-    boolean existsByManagerId(Integer managerId);
+    boolean existsByManagerEmployeeId(Integer managerId);
 
-    List<Employee> findByManagerId(Integer managerId);
+    List<Employee> findByManagerEmployeeId(Integer managerId);
 }

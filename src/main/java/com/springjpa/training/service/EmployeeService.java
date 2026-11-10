@@ -134,7 +134,7 @@ public class EmployeeService {
         if (!employeeRepository.existsById(id)) {
             throw new EmployeeNotFoundException(id);
         }
-        if (employeeRepository.existsByManagerId(id)) {
+        if (employeeRepository.existsByManagerEmployeeId(id)) {
             throw new BusinessRuleException("Employee " + id + " still has direct reports");
         }
         employeeRepository.deleteById(id);   // [CrudRepository] deleteById
@@ -255,15 +255,15 @@ public class EmployeeService {
         // 1. replacement takes over the leaver's position
         replacement.setJobTitle(leaving.getJobTitle());
         replacement.setDepartment(leaving.getDepartment());
-        replacement.setManagerId(leaving.getManagerId());
+        replacement.setManager(leaving.getManager());
         if (replacement.getSalary() == null) {
             replacement.setSalary(leaving.getSalary());
         }
         Employee saved = employeeRepository.saveAndFlush(replacement);   // ID is generated here
 
         // 2. direct reports now report to the replacement (dirty checking, no save())
-        for (Employee report : employeeRepository.findByManagerId(leavingId)) {
-            report.setManagerId(saved.getEmployeeId());
+        for (Employee report : employeeRepository.findByManagerEmployeeId(leavingId)) {
+            report.setManager(saved);
         }
 
         // 3. the leaver stays in the table as inactive (soft delete)

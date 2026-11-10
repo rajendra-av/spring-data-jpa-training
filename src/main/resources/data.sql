@@ -1,3 +1,10 @@
+INSERT INTO department (department_id, department_name, location, budget, is_active) VALUES
+(1, 'IT', 'Hyderabad', '2500000.00', true),
+(2, 'HR', 'Bengaluru', '800000.00', true),
+(3, 'Finance', 'Chennai', '1200000.00', true),
+(4, 'Sales', 'Mumbai', '1800000.00', true),
+(5, 'Operations', 'Hyderabad', '950000.00', true);
+
 INSERT INTO employee (first_name, last_name, email, phone, hire_date, job_title, department, salary, manager_id, city, is_active) VALUES
 ('Asha',       'Rao',          'asha.rao@example.com',        '9000000001', '2012-04-02', 'Director of Engineering',   'IT',         280000.00, NULL, 'Hyderabad', TRUE),
 ('Vikram',     'Reddy',        'vikram.reddy@example.com',    '9000000002', '2014-08-18', 'HR Head',                   'HR',         190000.00, NULL, 'Bengaluru', TRUE),
@@ -49,3 +56,41 @@ INSERT INTO employee (first_name, last_name, email, phone, hire_date, job_title,
 ('Rahul',      'Pandey',       'rahul.pandey@example.com',    '9000000048', '2024-07-29', 'Warehouse Associate',       'Operations',  39000.00, 43,   'Bengaluru', TRUE),
 ('Shreya',     'Ghosh',        'shreya.ghosh@example.com',    '9000000049', '2021-01-25', 'Operations Analyst',        'Operations',  84000.00, 41,   'Kolkata',   TRUE),
 ('Mahesh',     'Kulkarni',     'mahesh.kulkarni@example.com', '9000000050', '2025-02-17', 'Procurement Assistant',     'Operations',  36000.00, 44,   'Pune',      TRUE);
+
+
+UPDATE department SET manager_id = department_id;
+
+
+INSERT INTO project (project_id, project_name, department_id, budget, start_date, end_date, status) VALUES
+(1, 'Customer Portal Revamp', 1, '900000.00', '2025-01-01', '2026-06-30', 'Active'),
+(2, 'Payroll Automation', 2, '250000.00', '2025-03-01', '2026-03-31', 'Completed'),
+(3, 'Quarterly Audit 2026', 3, '180000.00', '2026-01-01', null, 'Active'),
+(4, 'Enterprise CRM Rollout', 4, '600000.00', '2025-07-01', null, 'Active'),
+(5, 'Warehouse Management System', 5, '480000.00', '2024-10-01', '2026-02-28', 'Completed'),
+(6, 'Data Platform Migration', 1, '1200000.00', '2026-04-01', null, 'Active');
+
+
+INSERT INTO employee_project (employee_id, project_id, role, hours_per_week) VALUES
+ (1, 6, 'Sponsor', '2.0'),
+ (2, 2, 'Sponsor', '3.0'),
+ (6, 1, 'Tech Lead', '30.0'),
+ (6, 6, 'Architect', '10.0'),
+ (7, 1, 'Developer', '35.0'),
+ (8, 1, 'Developer', '40.0'),
+ (9, 1, 'QA Lead', '25.0'),
+ (10, 6, 'DevOps Lead', '30.0'),
+ (11, 6, 'Data Lead', '32.0'),
+ (13, 1, 'Frontend Lead', '38.0'),
+ (14, 1, 'Business Analyst', '20.0'),
+ (16, 6, 'DBA', '20.0'),
+ (18, 6, 'Security Reviewer', '8.0'),
+ (19, 2, 'Project Coordinator', '20.0'),
+ (22, 2, 'Payroll Lead', '30.0'),
+ (25, 3, 'Lead Auditor', '30.0'),
+ (29, 3, 'Tax Specialist', '25.0'),
+ (32, 4, 'Sales Lead', '35.0'),
+ (33, 4, 'Account Executive', '30.0'),
+ (37, 4, 'Key Account Owner', '25.0'),
+ (41, 5, 'Operations Lead', '30.0'),
+ (42, 5, 'Logistics Lead', '25.0'),
+ (44, 5, 'Procurement Lead', '28.0');
