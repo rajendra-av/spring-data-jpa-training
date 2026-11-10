@@ -262,7 +262,7 @@ public class EmployeeService {
         Employee saved = employeeRepository.saveAndFlush(replacement);   // ID is generated here
 
         // 2. direct reports now report to the replacement (dirty checking, no save())
-        for (Employee report : employeeRepository.findByManagerEmployeeId(leavingId)) {
+        for (Employee report : employeeRepository.findByManager(leaving)) {
             report.setManager(saved);
         }
 
